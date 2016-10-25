@@ -1,0 +1,41 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowListener;
+
+public class Grafik extends JPanel {
+
+	private int width = 100;
+	private int height = 100;
+	private int d = 50;
+	private int x = 0;
+	private int y = 0;
+	
+	private void moveBall(){
+		x +=1;
+		y +=1;
+	}
+	
+	public void paint(Graphics g){
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.fillOval(x, y, d, d);
+	}
+	
+	public static void main(String[] args) throws InterruptedException {
+		JFrame frame = new JFrame();
+		Grafik grafik = new Grafik();
+		
+		frame.setSize(700, 800); //x, y
+		frame.setLocation(300, 300); //x, y
+		frame.setDefaultCloseOperation(3);
+		frame.addWindowListener((WindowListener) grafik);
+		frame.setTitle("Donger Spel");
+		frame.setResizable(false);
+		frame.setVisible(true);
+		
+		while(true){
+			grafik.moveBall();
+			grafik.repaint();
+			Thread.sleep(10);
+	}
+	}}
+	
